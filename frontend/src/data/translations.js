@@ -240,6 +240,7 @@ export const translations = {
         email: 'Email',
         phone: 'Phone',
         service: 'Desired Service',
+        servicePlaceholder: 'Select a service',
         message: 'Message',
         submit: 'Send Request',
         success: 'Thank you! We will contact you shortly.',

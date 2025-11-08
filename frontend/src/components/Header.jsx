@@ -41,7 +41,8 @@ const Header = ({ onContactClick }) => {
               className="flex items-center gap-2 hover:bg-blue-50 transition-colors"
             >
               <Globe className="w-4 h-4" />
-              <span className="font-semibold">{language === 'de' ? 'EN' : 'DE'}</span>
+              {/* Show current language code to avoid confusion (DE when German is active) */}
+              <span className="font-semibold">{language === 'de' ? 'DE' : 'EN'}</span>
             </Button>
             
             <Button

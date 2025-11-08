@@ -12,6 +12,26 @@ import { translations } from '../data/translations';
 const ContactForm = () => {
   const { language } = useLanguage();
   const t = translations[language];
+  // Placeholder and options for the service select (use translations when available)
+  const servicePlaceholder = (t?.contact?.form?.servicePlaceholder) || (t?.contact?.form?.service) || 'Select a service';
+  const serviceOptions = (t?.services && Array.isArray(t.services.list))
+    ? t.services.list.map((it) => it.title)
+    : [
+        'Building cleaning',
+        'Final cleaning of the apartment',
+        'Disinfection cleaning',
+        'Office cleaning',
+        'Carpet cleaning',
+        'Glass cleaning',
+        'Routine cleaning',
+        'Final construction cleaning',
+        'Practice cleaning',
+        'Basic cleaning',
+        'Facility Management',
+        'High-pressure cleaning',
+        'Other cleaning services',
+        'Stairwell cleaning'
+      ];
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -43,21 +63,61 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Allow overriding API base with env var in development
-      const API_BASE = process.env.REACT_APP_CONTACT_FORM_API;
-      const res = await fetch(API_BASE, {
+      // Formspree endpoint must be provided via env: REACT_APP_CONTACT_FORM_API
+      // e.g. REACT_APP_CONTACT_FORM_API=https://formspree.io/f/your_form_id
+      const ENDPOINT = process.env.REACT_APP_CONTACT_FORM_API;
+
+      if (!ENDPOINT) {
+        toast({ title: 'Kontaktformular ist nicht konfiguriert.', variant: 'destructive' });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Build FormData from the actual form element so FormData constructor gets an HTMLFormElement
+      const formElement = document.getElementById('my-form');
+      if (!formElement) {
+        console.error('Form element with id "my-form" not found');
+        toast({ title: t.contact.form.error, variant: 'destructive' });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const formPayload = new FormData(formElement);
+
+      // Submit as multipart/form-data — DO NOT set Content-Type header (browser will add boundary)
+      const res = await fetch(`https://formspree.io${ENDPOINT}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formPayload
       });
 
-      const data = await res.json();
-
-      if (res.ok && data.sent) {
+      // Formspree returns 200/202 for success. Use res.ok to detect success.
+      if (res.ok) {
         toast({ title: t.contact.form.success });
         setFormData({ name: '', email: '', phone: '', service: '', message: '' });
       } else {
-        toast({ title: data.detail || t.contact.form.error, variant: 'destructive' });
+        // Defensive parsing: only call res.json() when response is JSON.
+        let detail = t.contact.form.error;
+        try {
+          const contentType = (res.headers.get('content-type') || '').toLowerCase();
+          if (contentType.includes('application/json')) {
+            const json = await res.json();
+            if (json && json.error) detail = json.error;
+            if (json && json.errors && Array.isArray(json.errors)) {
+              detail = json.errors.map((e) => e.message || e).join(', ');
+            }
+          } else {
+            // Not JSON (likely an HTML error page). Read text for debugging and show a friendly message.
+            const text = await res.text();
+            console.error('Non-JSON response from contact endpoint:', text);
+            detail = t.contact.form.error + ' (non-JSON response)';
+          }
+        } catch (parseErr) {
+          console.error('Failed to parse error response', parseErr);
+        }
+        toast({ title: detail, variant: 'destructive' });
       }
     } catch (err) {
       console.error('Send email error', err);
@@ -167,6 +227,7 @@ const ContactForm = () => {
                         <Input
                           id="phone"
                           name="phone"
+                          type="number"
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="+49"
@@ -175,14 +236,22 @@ const ContactForm = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="service">{t.contact.form.service}</Label>
-                        <Input
+                        <select
                           id="service"
                           name="service"
                           value={formData.service}
                           onChange={handleChange}
-                          placeholder={t.contact.form.service}
-                          className="border-gray-300 focus:border-blue-600"
-                        />
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="" disabled>
+                            {servicePlaceholder}
+                          </option>
+                          {serviceOptions.map((opt) => (
+                            <option key={opt} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
 
