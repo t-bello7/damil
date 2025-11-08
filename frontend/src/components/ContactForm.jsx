@@ -41,21 +41,30 @@ const ContactForm = () => {
     }
 
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: t.contact.form.success
+
+    try {
+      // Allow overriding API base with env var in development
+      const API_BASE = process.env.REACT_APP_CONTACT_FORM_API;
+      const res = await fetch(API_BASE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
-      });
+
+      const data = await res.json();
+
+      if (res.ok && data.sent) {
+        toast({ title: t.contact.form.success });
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      } else {
+        toast({ title: data.detail || t.contact.form.error, variant: 'destructive' });
+      }
+    } catch (err) {
+      console.error('Send email error', err);
+      toast({ title: t.contact.form.error, variant: 'destructive' });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -98,8 +107,8 @@ const ContactForm = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-                      <a href="mailto:info@dnamanagement.de" className="text-blue-600 hover:text-blue-700 font-medium">
-                        info@dnamanagement.de
+                      <a href="mailto:kontact@dnamanagement.de" className="text-blue-600 hover:text-blue-700 font-medium">
+                        kontact@dnamanagement.de
                       </a>
                     </div>
                   </div>
@@ -110,7 +119,7 @@ const ContactForm = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">Standort</h3>
-                      <p className="text-gray-600">Deutschland</p>
+                      <p className="text-gray-600">LÜHMANNSTRASSE HAMBURG , 21075</p>
                     </div>
                   </div>
                 </CardContent>
@@ -125,7 +134,7 @@ const ContactForm = () => {
                   <CardDescription>{t.contact.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form id="my-form" method="POST" onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="name">{t.contact.form.name}</Label>
