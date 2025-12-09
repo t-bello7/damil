@@ -9,6 +9,8 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
+import smtplib
+from email.message import EmailMessage
 
 
 ROOT_DIR = Path(__file__).parent
@@ -36,6 +38,15 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+
+# Contact email model
+class ContactEmail(BaseModel):
+    name: str
+    email: str
+    phone: str | None = None
+    service: str | None = None
+    message: str
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
@@ -65,6 +76,69 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+
+# Endpoint to receive contact form submissions and send as email
+@api_router.post('/send-email')
+async def send_email(contact: ContactEmail):
+    """Send contact form to configured recipient using SMTP.
+
+    Environment variables used:
+    - SMTP_HOST (optional)
+    - SMTP_PORT (optional)
+    - SMTP_USER (optional)
+    - SMTP_PASS (optional)
+    - FROM_EMAIL (optional)
+    - CONTACT_RECIPIENT (optional, default kontact@dnamangement.de)
+    """
+    recipient = os.environ.get('CONTACT_RECIPIENT', 'kontact@dnamangement.de')
+
+    subject = f"New contact form submission from {contact.name}"
+    body = (
+        f"Name: {contact.name}\n"
+        f"Email: {contact.email}\n"
+        f"Phone: {contact.phone or ''}\n"
+        f"Service: {contact.service or ''}\n\n"
+        f"Message:\n{contact.message}\n"
+    )
+
+    smtp_host = os.environ.get('SMTP_HOST')
+    smtp_port = int(os.environ.get('SMTP_PORT', '0') or 0)
+    smtp_user = os.environ.get('SMTP_USER')
+    smtp_pass = os.environ.get('SMTP_PASS')
+    from_email = os.environ.get('FROM_EMAIL', smtp_user or 'no-reply@example.com')
+
+    # Build email
+    msg = EmailMessage()
+    msg['Subject'] = subject
+    msg['From'] = from_email
+    msg['To'] = recipient
+    msg.set_content(body)
+
+    if not smtp_host:
+        # SMTP not configured: log and return a non-fatal response
+        logger.info('SMTP not configured. Contact email content:\n%s', body)
+        return {'sent': False, 'detail': 'SMTP not configured; email logged on server.'}
+
+    try:
+        if smtp_port == 465:
+            server = smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=10)
+        else:
+            server = smtplib.SMTP(smtp_host, smtp_port or 587, timeout=10)
+            server.ehlo()
+            server.starttls()
+
+        if smtp_user and smtp_pass:
+            server.login(smtp_user, smtp_pass)
+
+        server.send_message(msg)
+        server.quit()
+
+        logger.info('Contact email sent to %s from %s', recipient, from_email)
+        return {'sent': True}
+    except Exception as exc:
+        logger.exception('Failed to send contact email')
+        return {'sent': False, 'detail': str(exc)}
 
 # Include the router in the main app
 app.include_router(api_router)
