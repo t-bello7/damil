@@ -11,9 +11,9 @@ export default function Home() {
   return <div className="font-sfProDisplay">
     <Header />
     <Hero />
+    <Testimonials />
     <Projects />
     <Intro />
-    <Testimonials />
     <CTA />
     <Footer />  
   </div>
