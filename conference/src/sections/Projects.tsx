@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import { corporateTrainingHero } from "@/assets/images";
+import {
+  corporateTrainingHero,
+  effectiveCommunicationTraining,
+  highPerformanceTeamBuilding,
+} from "@/assets/images";
 
 const programs = [
   {
@@ -16,6 +20,7 @@ const programs = [
       "High-stakes decision making",
       "Change management and resilience",
     ],
+    image: corporateTrainingHero,
   },
   {
     number: "02",
@@ -29,6 +34,7 @@ const programs = [
       "Storytelling for business impact",
       "Stakeholder management",
     ],
+    image: effectiveCommunicationTraining,
     reverse: true,
   },
   {
@@ -43,6 +49,7 @@ const programs = [
       "Accountability and performance culture",
       "Remote and hybrid team effectiveness",
     ],
+    image: highPerformanceTeamBuilding,
   },
 ];
 
@@ -71,7 +78,7 @@ const Projects: FC = () => {
               <div className={program.reverse ? "lg:order-2" : ""}>
                 <div className="relative aspect-[1.42] overflow-hidden rounded-[28px] md:rounded-[34px] lg:aspect-[1.38]">
                   <Image
-                    src={corporateTrainingHero}
+                    src={program.image}
                     alt={`${program.title} training session`}
                     fill
                     sizes="(min-width: 1200px) 680px, 100vw"

@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "DNA Management | Corporate Training & Development",
   description: "DNA Management delivers corporate training and development programs that help organizations build stronger leaders, improve communication, and create high-performing teams.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

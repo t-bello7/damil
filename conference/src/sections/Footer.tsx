@@ -37,7 +37,7 @@ const Footer: FC = () => {
               href="mailto:hello@dnamanagement.com"
               className="mt-4 block font-sfProDisplayBold text-[2rem] font-black leading-tight text-white transition hover:text-[#bd7a35] md:text-4xl"
             >
-              hello@dnamanagement.com
+              contact@dnamanagement.com
             </a>
             <p className="mt-3 text-base font-semibold text-white/62 md:text-lg">
               Mon-Fri, 9am-6pm PST
@@ -70,7 +70,10 @@ const Footer: FC = () => {
 
             <div className="my-14 h-px w-full bg-black/10 md:my-20" />
 
-            <form className="space-y-16">
+            <form className="space-y-16"
+              action="https://formspree.io/f/mwkywooe"
+              method="POST"
+              >
               <fieldset className="space-y-9">
                 <legend className="w-full border-b border-black/10 pb-5 font-sfProDisplayBold text-2xl font-black">
                   <span className="border-l-[3px] border-[#bd7a35] pl-5">

@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import Link  from "next/link";
 import { FC } from "react";
 import { Button } from "@/components";
 import { corporateTrainingHero } from "@/assets/images";
@@ -44,12 +45,14 @@ const Hero: FC = () => {
               >
                 Explore Programs
               </Button>
-              <Button
-                variant="outline"
-                className="h-14 min-w-[190px] justify-center border-white/30 bg-transparent px-8 text-base font-bold normal-case text-white outline-none hover:border-white/60 hover:bg-white/10 md:h-[68px] md:text-xl"
-              >
-                Get in Touch
-              </Button>
+              <Link href="#contact">
+                <Button
+                  variant="outline"
+                  className="h-14 min-w-[190px] justify-center border-white/30 bg-transparent px-8 text-base font-bold normal-case text-white outline-none hover:border-white/60 hover:bg-white/10 md:h-[68px] md:text-xl"
+                >
+                  Get in Touch
+                </Button>
+              </Link>
             </div>
           </div>
 
