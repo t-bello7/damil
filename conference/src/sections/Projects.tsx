@@ -11,14 +11,14 @@ const programs = [
   {
     number: "01",
     category: "Leadership",
-    title: "Executive Leadership Development",
+    title: "Advance Accunting and Auditing",
     description:
-      "Equip your leaders with the strategic thinking, emotional intelligence, and decision-making frameworks needed to drive organizational success in today's complex business environment.",
+      "Public accountants and auditors maintain trust in financial markets by providing transparency and accountability. This course focuses on advanced accounting and auditing topics — handling complex transactions, applying rigorous audit methodologies, and interpreting evolving regulatory requirements.",
     points: [
-      "Strategic vision and goal alignment",
-      "Emotional intelligence and empathy",
-      "High-stakes decision making",
-      "Change management and resilience",
+      "Advanced accounting for complex transactions and consolidations",
+      "Rigorous audit methodologies, sampling, and evidence evaluation",
+      "Regulatory compliance, reporting standards, and rule changes",
+      "Risk assessment, internal controls, and professional ethics",
     ],
     image: corporateTrainingHero,
   },
