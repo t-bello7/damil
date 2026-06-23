@@ -8,7 +8,7 @@ import {
   Footer
 } from "@/sections";
 export default function Home() {
-  return <div className="font-sfProDisplay">
+  return <main className="w-full overflow-x-clip font-sfProDisplay">
     <Header />
     <Hero />
     <Testimonials />
@@ -16,5 +16,5 @@ export default function Home() {
     <Intro />
     <CTA />
     <Footer />  
-  </div>
+  </main>
 }

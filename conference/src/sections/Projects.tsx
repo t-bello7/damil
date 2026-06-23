@@ -55,13 +55,13 @@ const programs = [
 
 const Projects: FC = () => {
   return (
-    <section id="projects" className="bg-[#f7f7f4] py-20 text-[#101010] md:py-28 lg:py-36">
-      <div className="mx-auto max-w-[1510px] px-5 sm:px-8 lg:px-14">
+    <section id="projects" className="w-full max-w-full overflow-x-clip bg-[#f7f7f4] py-20 text-[#101010] md:py-28 lg:py-36">
+      <div className="mx-auto w-full max-w-[1510px] px-4 sm:px-8 lg:px-14">
         <div className="max-w-[560px]">
           <p className="text-xs font-black uppercase tracking-[0.28em] text-black/38">
             Our Programs
           </p>
-          <h2 className="mt-5 font-sfProDisplayBold text-[2.65rem] font-black leading-[1.02] tracking-normal md:text-6xl">
+          <h2 className="mt-5 max-w-full break-words font-sfProDisplayBold text-[clamp(2.25rem,11vw,2.65rem)] font-black leading-[1.02] tracking-normal md:text-6xl">
             Training Programs That
             <span className="block text-[#a96a31]">Drive Results</span>
           </h2>
@@ -107,7 +107,7 @@ const Projects: FC = () => {
                   <p className="text-xs font-black uppercase tracking-[0.28em] text-black/38">
                     {program.category}
                   </p>
-                  <h3 className="mt-7 border-l-[3px] border-[#bd7a35] pl-5 font-sfProDisplayBold text-[2rem] font-black leading-[1.08] tracking-normal md:text-[2.6rem]">
+                  <h3 className="mt-7 max-w-full break-words border-l-[3px] border-[#bd7a35] pl-5 font-sfProDisplayBold text-[clamp(1.75rem,8vw,2rem)] font-black leading-[1.08] tracking-normal md:text-[2.6rem]">
                     {program.title}
                   </h3>
                   <p className="mt-8 text-base font-semibold leading-8 text-black/68 md:text-lg md:leading-9">

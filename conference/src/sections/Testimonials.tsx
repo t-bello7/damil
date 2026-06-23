@@ -70,8 +70,8 @@ const Testimonials: FC = () => {
   ];
 
   return (
-    <section id="testimonials" className="border-y border-black/10 bg-[#f7f7f4] py-20 text-[#101010] md:py-28 lg:py-36">
-      <div className="mx-auto grid max-w-[1510px] gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,680px)_minmax(360px,1fr)] lg:items-center lg:gap-20 lg:px-14 xl:gap-28">
+    <section id="testimonials" className="w-full max-w-full overflow-x-clip border-y border-black/10 bg-[#f7f7f4] py-20 text-[#101010] md:py-28 lg:py-36">
+      <div className="mx-auto grid w-full max-w-[1510px] gap-12 px-4 sm:px-8 lg:grid-cols-[minmax(0,680px)_minmax(360px,1fr)] lg:items-center lg:gap-20 lg:px-14 xl:gap-28">
         <div className="relative">
           <div className="relative aspect-[1.05] overflow-hidden rounded-[8px] bg-[#080808] md:aspect-[1.18] lg:aspect-[0.98]">
             <Image
@@ -84,11 +84,11 @@ const Testimonials: FC = () => {
             <div className="absolute inset-0 bg-[#080808]/18" />
           </div>
 
-          <div className="absolute inset-x-5 bottom-5 bg-[#bd7a35] px-5 py-5 text-white shadow-2xl shadow-black/20 sm:inset-x-auto sm:right-8 sm:w-[390px] md:px-7 md:py-6">
+          <div className="absolute inset-x-3 bottom-3 bg-[#bd7a35] px-3 py-4 text-white shadow-2xl shadow-black/20 sm:inset-x-auto sm:bottom-5 sm:right-8 sm:w-[390px] sm:px-5 sm:py-5 md:px-7 md:py-6">
             <div className="flex divide-x divide-white/28">
               {countdownItems.map((item) => (
-                <div key={item.label} className="flex-1 px-3 text-center first:pl-0 last:pr-0">
-                  <p className="font-sfProDisplayBold text-[1.75rem] font-black leading-none md:text-[2.35rem]">
+                <div key={item.label} className="min-w-0 flex-1 px-2 text-center first:pl-0 last:pr-0 sm:px-3">
+                  <p className="font-sfProDisplayBold text-[clamp(1.35rem,8vw,1.75rem)] font-black leading-none md:text-[2.35rem]">
                     {String(item.value).padStart(2, "0")}
                   </p>
                   <p className="mt-2 text-xs font-semibold leading-4 text-white/82 md:text-sm">
@@ -104,7 +104,7 @@ const Testimonials: FC = () => {
           <p className="text-xs font-black uppercase tracking-[0.28em] text-[#bd7a35]">
             About Meetup
           </p>
-          <h2 className="mt-6 font-sfProDisplayBold text-[2.75rem] font-black uppercase leading-[1.12] tracking-normal md:text-6xl lg:text-[4.6rem]">
+          <h2 className="mt-6 max-w-full break-words font-sfProDisplayBold text-[clamp(2.15rem,11vw,2.75rem)] font-black uppercase leading-[1.12] tracking-normal md:text-6xl lg:text-[4.6rem]">
             Welcome to the biggest conference in germany 2026
           </h2>
           <p className="mt-7 text-base font-semibold leading-8 text-black/70 md:text-lg md:leading-9">

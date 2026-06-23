@@ -29,14 +29,14 @@ const Header: FC = () => {
   const [openMobileMenu, setOpenMobileMenu ]= useState(false)
 
   return (
-    <header className="absolute inset-x-0 top-0 z-30 font-sfProDisplay">
-      <div className="mx-auto max-w-[1510px] px-5 sm:px-8 lg:px-14">
+    <header className="absolute inset-x-0 top-0 z-30 w-full max-w-full overflow-x-clip font-sfProDisplay">
+      <div className="mx-auto w-full max-w-[1510px] px-4 sm:px-8 lg:px-14">
         <div className="flex h-[76px] items-center justify-between border-b border-white/10 bg-black/20 px-0 backdrop-blur-sm lg:h-[92px]">
           <Link href="#" className="flex items-center gap-3 text-white">
-                <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-[11px] bg-white shadow-lg shadow-black/10 md:h-14 md:w-14">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[11px] bg-white shadow-lg shadow-black/10 sm:h-12 sm:w-12 md:h-14 md:w-14">
                   <Image src={dnaLogo} alt="DNA Management logo" className="h-full w-full object-contain p-1" />
                 </span>
-                <span className="font-sfProDisplayBold text-2xl font-black tracking-[-0.01em] md:text-[28px]">
+                <span className="font-sfProDisplayBold text-xl font-black tracking-normal sm:text-2xl md:text-[28px]">
                   DNA Management
                 </span>
           </Link>
@@ -59,7 +59,7 @@ const Header: FC = () => {
           </Link>
 
           <button
-            className="relative z-40 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white md:hidden"
+            className="relative z-40 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white md:hidden"
             aria-label="Toggle navigation"
             onClick={() => setOpenMobileMenu(!openMobileMenu)}
           >
@@ -83,7 +83,7 @@ const Header: FC = () => {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="mx-5 mt-3 rounded-[8px] border border-white/10 bg-[#171512]/95 p-4 shadow-2xl md:hidden"
+            className="mx-4 mt-3 rounded-[8px] border border-white/10 bg-[#171512]/95 p-4 shadow-2xl sm:mx-5 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {navItems.map(({ label, href }) => (

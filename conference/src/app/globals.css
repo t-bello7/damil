@@ -6,6 +6,17 @@ html {
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-width: 0;
+}
+
 .section {
     @apply py-24 md:py-32 lg:py-10
 }

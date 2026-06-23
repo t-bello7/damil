@@ -22,13 +22,13 @@ const processSteps = [
 
 const CTA: FC = () => {
   return (
-    <section className="bg-[#080808] py-20 text-[#f7f4ec] md:py-28 lg:py-36">
-      <div className="mx-auto grid max-w-[1510px] gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,770px)_minmax(420px,620px)] lg:items-center lg:gap-24 lg:px-14">
+    <section className="w-full max-w-full overflow-x-clip bg-[#080808] py-20 text-[#f7f4ec] md:py-28 lg:py-36">
+      <div className="mx-auto grid w-full max-w-[1510px] gap-14 px-4 sm:px-8 lg:grid-cols-[minmax(0,770px)_minmax(420px,620px)] lg:items-center lg:gap-24 lg:px-14">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.28em] text-white/58">
             Start Today
           </p>
-          <h2 className="mt-20 max-w-[850px] font-sfProDisplayBold text-[3.4rem] font-black leading-[1.02] tracking-normal md:text-7xl lg:text-[5.7rem] xl:text-[6.5rem]">
+          <h2 className="mt-20 max-w-[850px] break-words font-sfProDisplayBold text-[clamp(2.5rem,12vw,3.4rem)] font-black leading-[1.02] tracking-normal md:text-7xl lg:text-[5.7rem] xl:text-[6.5rem]">
             Ready to Build a
             <span className="block text-[#bd7a35]">Stronger Team?</span>
           </h2>
@@ -36,16 +36,16 @@ const CTA: FC = () => {
             Let&apos;s design a training program that fits your organization&apos;s unique needs, culture, and ambitions. Our team is ready to help.
           </p>
 
-          <div className="mt-16 flex flex-col gap-5 sm:flex-row">
+          <div className="mt-16 flex w-full flex-col gap-5 sm:flex-row">
             <Link
               href="#contact"
-              className="inline-flex h-16 items-center justify-center rounded-full bg-[#bd7a35] px-9 text-lg font-black text-white transition hover:bg-[#a9672d] md:min-w-[315px] md:text-2xl"
+              className="inline-flex h-16 w-full items-center justify-center rounded-full bg-[#bd7a35] px-6 text-center text-base font-black text-white transition hover:bg-[#a9672d] sm:w-auto sm:px-9 sm:text-lg md:min-w-[315px] md:text-2xl"
             >
               Schedule a Consultation
             </Link>
             <Link
               href="#projects"
-              className="inline-flex h-16 items-center justify-center rounded-full border-4 border-white/20 px-9 text-lg font-black text-white transition hover:border-white/45 hover:bg-white/5 md:min-w-[230px] md:text-2xl"
+              className="inline-flex h-16 w-full items-center justify-center rounded-full border-4 border-white/20 px-6 text-center text-base font-black text-white transition hover:border-white/45 hover:bg-white/5 sm:w-auto sm:px-9 sm:text-lg md:min-w-[230px] md:text-2xl"
             >
               View Programs
             </Link>

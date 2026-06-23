@@ -23,14 +23,14 @@ const principles = [
 
 const Intro: FC = () => {
   return (
-    <section id="intro" className="bg-[#080808] py-20 text-[#f7f4ec] md:py-28 lg:py-36">
-      <div className="mx-auto max-w-[1510px] px-5 sm:px-8 lg:px-14">
+    <section id="intro" className="w-full max-w-full overflow-x-clip bg-[#080808] py-20 text-[#f7f4ec] md:py-28 lg:py-36">
+      <div className="mx-auto w-full max-w-[1510px] px-4 sm:px-8 lg:px-14">
         <div className="mx-auto max-w-[1210px]">
           <p className="text-xs font-black uppercase tracking-[0.28em] text-white/58">
             Our Story
           </p>
 
-          <h2 className="mt-16 max-w-[1080px] font-sfProDisplayBold text-[3.1rem] font-black leading-[1.05] tracking-normal md:text-7xl lg:text-[5.9rem]">
+          <h2 className="mt-16 max-w-[1080px] break-words font-sfProDisplayBold text-[clamp(2.45rem,12vw,3.1rem)] font-black leading-[1.05] tracking-normal md:text-7xl lg:text-[5.9rem]">
             We Believe in the <span className="text-[#bd7a35]">Power of People</span>
           </h2>
 
@@ -66,7 +66,7 @@ const Intro: FC = () => {
           </div>
 
           <figure className="mt-20 border-l-[4px] border-[#bd7a35] pl-8 md:mt-28 md:pl-12">
-            <blockquote className="max-w-[1180px] font-sfProDisplayBold text-[2.05rem] font-black leading-[1.25] tracking-normal md:text-5xl md:leading-[1.22]">
+            <blockquote className="max-w-[1180px] break-words font-sfProDisplayBold text-[clamp(1.75rem,8vw,2.05rem)] font-black leading-[1.25] tracking-normal md:text-5xl md:leading-[1.22]">
               &quot;The best investment any organization can make is in the growth of its people.&quot;
             </blockquote>
             <figcaption className="mt-6 text-base font-semibold text-white/64 md:text-lg">
