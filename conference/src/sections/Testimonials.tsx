@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { conferenceKeynote } from "@/assets/images";
 
-const countdownTarget = new Date(2026, 6, 3).getTime();
+const countdownTarget = new Date(2026, 6, 27).getTime();
 
 const getCountdown = () => {
   const remaining = Math.max(countdownTarget - Date.now(), 0);
