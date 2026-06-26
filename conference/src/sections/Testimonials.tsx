@@ -28,10 +28,10 @@ const testimonials = [
   },
   {
     quote:
-      "The communication training was unlike anything we'd experienced before. Our managers went from dreading difficult conversations to handling them with genuine confidence and skill.",
-    name: "Marcus Johnson",
-    role: "VP of Operations, Meridian Group",
-    initials: "MJ",
+      "This training is designed for experienced accountants, auditors, and financial professionals who aim to Advance their expertise.",
+    name: "Stella Gounder",
+    role: "Anchor Partner, Stillfrontier",
+    initials: "SG",
     featured: true,
   },
   {
@@ -105,10 +105,10 @@ const Testimonials: FC = () => {
             About Meetup
           </p>
           <h2 className="mt-6 max-w-full break-words font-sfProDisplayBold text-[clamp(2.15rem,11vw,2.75rem)] font-black uppercase leading-[1.12] tracking-normal md:text-6xl lg:text-[4.6rem]">
-            Welcome to the biggest conference in germany 2026
+            Advance Accounting and Auditing Workshop for public officers
           </h2>
           <p className="mt-7 text-base font-semibold leading-8 text-black/70 md:text-lg md:leading-9">
-            Hear from leaders who have used DNA Management programs to strengthen communication, rebuild trust, and create measurable momentum inside their organizations.
+            Public accountants and auditors play a crucial role in maintaining public trust, providing transparency and accountability.
           </p>
           <blockquote className="mt-7 border-l-[3px] border-[#bd7a35] pl-6 text-lg font-semibold leading-9 text-black/72 md:text-xl md:leading-10">
             &quot;{featuredTestimonial.quote}&quot;

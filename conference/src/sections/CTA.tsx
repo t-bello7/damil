@@ -44,7 +44,7 @@ const CTA: FC = () => {
               Schedule a Consultation
             </Link>
             <Link
-              href="#projects"
+              href="#testimonials"
               className="inline-flex h-16 w-full items-center justify-center rounded-full border-4 border-white/20 px-6 text-center text-base font-black text-white transition hover:border-white/45 hover:bg-white/5 sm:w-auto sm:px-9 sm:text-lg md:min-w-[230px] md:text-2xl"
             >
               View Programs

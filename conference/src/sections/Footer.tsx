@@ -31,16 +31,20 @@ const Footer: FC = () => {
 
           <div>
             <p className="text-xs font-black uppercase tracking-[0.28em] text-white/58">
-              Email Us Directly
+              Contact Us Directly
             </p>
             <a
               href="mailto:hello@dnamanagement.com"
               className="mt-4 block font-sfProDisplayBold text-[2rem] font-black leading-tight text-white transition hover:text-[#bd7a35] md:text-4xl"
             >
-              contact@dnamanagement.com
+              kontact@dnamanagement.de
+
             </a>
             <p className="mt-3 text-base font-semibold text-white/62 md:text-lg">
-              Mon-Fri, 9am-6pm PST
+              Lühmannstraße 24B , 21075 Hamburg
+            </p>
+            <p className="mt-2 text-base font-semibold text-white/62 md:text-lg">
+              +491714133877
             </p>
           </div>
 
@@ -73,7 +77,7 @@ const Footer: FC = () => {
             <form className="space-y-16"
               action="https://formspree.io/f/mwkywooe"
               method="POST"
-              >
+            >
               <fieldset className="space-y-9">
                 <legend className="w-full border-b border-black/10 pb-5 font-sfProDisplayBold text-2xl font-black">
                   <span className="border-l-[3px] border-[#bd7a35] pl-5">

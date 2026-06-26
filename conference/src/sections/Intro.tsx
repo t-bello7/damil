@@ -37,11 +37,11 @@ const Intro: FC = () => {
           <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,690px)_420px] lg:items-start lg:gap-20 xl:grid-cols-[minmax(0,760px)_470px]">
             <div className="space-y-8 text-lg font-semibold leading-9 text-white/70 md:text-2xl md:leading-[1.7] lg:pt-1">
               <p>
-                DNA Management was founded on a simple conviction:{" "}
+                DNA Management in partnership with Stillfrontier Konsult was founded on a simple conviction::{" "}
                 <strong className="font-sfProDisplayBold text-[#f7f4ec]">
                   organizations don&apos;t transform - people do.
                 </strong>{" "}
-                For over 15 years, we&apos;ve partnered with Fortune 500 companies, growing startups, and public sector organizations to develop the human capabilities that drive lasting change.
+                For many years we&apos;ve have evolved and partnered with many organisations, growing startups, and public sector organizations to develop the human capabilities that drive lasting change.
               </p>
 
               <p>

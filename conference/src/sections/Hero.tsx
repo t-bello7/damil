@@ -39,12 +39,15 @@ const Hero: FC = () => {
               and high-performing teams.
             </p>
             <div className="mt-9 flex w-full flex-col gap-4 sm:flex-row">
+              <Link href="#testimonials" className="w-full sm:w-auto">
               <Button
                 variant="primary"
                 className="h-14 w-full min-w-0 justify-center border-[#bd7a35] bg-[#bd7a35] px-6 text-base font-bold normal-case text-white hover:bg-[#a9672d] sm:w-auto sm:min-w-[210px] md:h-[68px] md:text-xl"
               >
-                Explore Programs
+                Explore Program
               </Button>
+
+              </Link>
               <Link href="#contact" className="w-full sm:w-auto">
                 <Button
                   variant="outline"

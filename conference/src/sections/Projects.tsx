@@ -10,8 +10,8 @@ import {
 const programs = [
   {
     number: "01",
-    category: "Leadership",
-    title: "Advance Accunting and Auditing",
+    category: "Finance & Accounting",
+    title: "Advance Accounting and Auditing",
     description:
       "Public accountants and auditors maintain trust in financial markets by providing transparency and accountability. This course focuses on advanced accounting and auditing topics — handling complex transactions, applying rigorous audit methodologies, and interpreting evolving regulatory requirements.",
     points: [
